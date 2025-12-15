@@ -1,6 +1,7 @@
 name: Repository Dispatch Ci-2 on Go Sum changes
 
 on:
+    workflow_dispatch:
     push:
         branches: [main]
         paths:
@@ -9,6 +10,7 @@ on:
         branches: [main]
         paths:
             - "go.sum"
+
 permissions:
     contents: read
 
