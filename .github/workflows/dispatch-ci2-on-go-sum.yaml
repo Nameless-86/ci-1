@@ -25,8 +25,11 @@ jobs:
                   if [ -z "${CI2_PAT}" ]; then
                     echo "missing access token"; exit 1
                   fi
-                  curl -X post \
-                      -H "Accept: application/vnd.github+json" \
-                      -H "Authorization: Bearer ${CI2_PAT}" \
-                      https://api.github.com/repos/Nameless-86/ci-2/dispatches \
-                      -d '{"event_type": "go_sum_changed-at-ci-1", "client_payload":{}}'
+
+                  set -e
+                  echo "calling repository dispatch..."
+                  curl -i --fail \
+                    -H "Accept: application/vnd.github+json" \
+                    -H "Authorization: Bearer ${CI2_PAT}" \
+                    https://api.github.com/repos/Nameless-86/ci-2/dispatches \
+                    -d '{"event_type": "go_sum_changed-at-ci-1", "client_payload":{}}'
