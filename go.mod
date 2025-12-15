@@ -1,4 +1,4 @@
-module main
+module github.com/Nameless-86/ci-1
 
 go 1.24.0
 
